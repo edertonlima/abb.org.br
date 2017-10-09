@@ -1,0 +1,148 @@
+.header {
+	width: 100%;
+	@include clear;
+
+	h1 {
+		float: left;
+	}
+
+	.box-menu {
+		float: right;
+		height: 34px;
+		padding: 25px 0;
+	}
+
+	.topbar {
+		background-color: #292b33;
+
+		.item_bar {
+			padding: 12px 0;
+			margin-left: 15px;
+			color: #bbbbbb;
+			line-height: 21px;
+			display: inline-block;
+			font-size: .8125rem;
+
+			i {
+				color: #bbbbbb;
+				margin-right: 2px;
+			}
+		}
+
+		.redes {
+			float: right;
+
+			.item_bar {
+				margin-right: 8px;
+
+				i {
+					font-size: 1.225rem;
+					@include animacao;
+				}
+
+				&:hover {
+					i {
+						color: #ffffff;
+					}
+				}
+			}
+		}
+
+		@media all and (max-width: 600px){
+			.tit_bar {
+				display: none;
+			}
+		}
+
+		@media all and (max-width: 500px){
+			text-align: center;
+			.redes {
+				display: none;
+				position: fixed;
+				z-index: 99999;
+				top: 16px;
+
+				a {
+					@include animacao;
+					
+					i {
+						color: #ffffff;
+						font-size: 1.5rem;
+					}
+
+					&:hover {
+						opacity: .3;
+					}
+				}
+			}
+		}
+	}
+
+	.header-tit {
+		background-color: #F7F7F7;
+		width: 100%;
+		border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+		.image-header {
+			width: 100%;
+			height: 13vh;
+			max-height: 130px;
+			background-size: cover;
+			background-position: center;
+			background-repeat: none;
+			@include clear;
+		}
+
+		.breadcrumbs {
+			display: block;
+			text-align: center;
+			margin-bottom: 25px;
+
+			li {
+				display: inline-block;
+
+				a, strong {
+					color: rgba(68, 68, 68, 0.6);
+				}
+
+				a {
+					text-decoration: none;
+					@include animacao;
+					&:hover {
+						color: $vermelho;
+					}
+				}
+
+				strong {
+					position: relative;
+					top: 1px;
+				}
+
+				&:after {
+					content: "\f105";
+					color: #bebebe;
+					font-family: 'FontAwesome';
+					display: inline-block;
+					padding: 0 20px 0 23px;
+					font-size: 1rem;
+					position: relative;
+					top: 1px;
+				}
+
+				&:last-child {
+					&:after {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+
+	&.active {
+		@media all and (max-width: 500px){
+			.redes {
+				display: block;
+			}
+		}
+	}
+}

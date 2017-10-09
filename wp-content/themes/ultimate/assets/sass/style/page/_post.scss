@@ -1,0 +1,145 @@
+.box-post {
+
+	&.box-projetos {
+		padding-top: 0;
+	}
+
+	.list-post {
+		li {
+
+			a:not(.leia-mais) {
+				display: block;
+				background-position: center;
+				background-size: cover;
+				background-repeat: no-repeat;
+				text-decoration: none;
+				@include animacao;
+
+				.mask {
+					background-color: rgba(#ffffff, .3);
+					display: block;
+					height: 20vh;
+					width: 100%;
+					text-align: center;
+					opacity: 0;
+					@include animacao;
+
+					i {
+						display: block;
+						color: $vermelho;
+						font-size: 3rem;
+						height: 20vh;
+						line-height: 20vh;
+						@include animacao;
+					}
+				}
+
+				&:hover {
+					.mask {
+						opacity: 1;
+					}
+				}
+			}
+
+			h3 {
+				font-size: 1.5rem;
+				line-height: 1.8rem;
+				font-weight: $light;
+				margin: 15px 0 10px;
+			}
+
+			p {
+				margin-bottom: 5px;
+			}
+
+			@media all and (max-width: 750px) {
+				max-width: 420px;
+				margin: 0 auto 50px;
+				float: none;
+
+				a:not(.leia-mais) {
+					height: 40vh;
+
+					.mask {
+						height: 40vh;
+
+						i {
+							line-height: 40vh;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.list-post-home {
+
+		h4 {
+			margin-bottom: 70px;
+		}
+
+		h3 {
+			padding: 60px 30px;
+			background-color: $vermelho;
+			text-align: center;
+			color: #fff;
+			font-size: 2rem;
+			font-weight: $light;
+			line-height: 2rem;
+		}
+
+		.list-post {
+			margin: 0px;
+
+			li {
+				height: 35vh;
+				overflow: hidden;
+				padding: 0;
+				position: relative;
+
+				a {
+					display: block;
+					height: 38vh;
+
+					.mask {
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 35vh;
+
+						i {
+							line-height: 35vh;
+						}
+					}
+
+					&:hover {
+						margin-top: -3vh;
+					}
+				}
+
+				@media all and (max-width: 750px) {
+					max-width: 100%;
+					height: 50vh;
+					margin-bottom: 0;
+
+					a {
+						height: 55vh;
+
+						.mask {
+							height: 50vh;
+
+							i {
+								line-height: 50vh;
+							}
+						}
+
+						&:hover {
+							margin-top: -5vh;
+						}
+					}
+				}
+			}
+		}
+	}
+}

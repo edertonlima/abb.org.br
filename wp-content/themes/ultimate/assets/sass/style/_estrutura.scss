@@ -1,0 +1,122 @@
+html {
+	font-size: 100%; 
+}
+
+body {
+	position: relative;
+	min-height: 100vh;
+}
+
+body * {
+	font-family: $font-family;
+	color: $cor-txt;
+	font-weight: $regular;
+}
+
+.container {
+	max-width: $width; 
+	width: 97%;
+	padding: 0 $padding-container;
+	margin: 0 auto;
+	position: relative;
+	@include box-sizing();
+	@include clear();
+
+	@media all and (max-width: 1000px){
+		padding-left: ($padding-container)/2;
+		padding-right: ($padding-container)/2;
+	}	
+
+	@media all and (max-width: 600px) {
+		padding-left: ($padding-container)/4;
+		padding-right: ($padding-container)/4;
+	}
+}
+
+.row {
+	margin-right: ($padding-col)*(-1);
+	margin-left: ($padding-col)*(-1);
+	display: block;
+	@include clear();
+
+	[class*="col-"] {
+		float: left;
+		padding-right: $padding-col;
+		padding-left: $padding-col;
+		@include box-sizing();
+
+		img {
+			max-width: 100%;
+		}
+	}
+
+
+	@for $i from 1 through 12 {
+		.col-#{$i} {
+			width: $i*(100%/12);
+		}
+	}
+
+	@media all and (max-width: 1100px) {
+		.col-6 {
+			width: 100%;
+		}
+	}
+
+	@media all and (max-width: 750px) {
+		.col-4 {
+			width: 100%;
+		}
+	}
+}
+
+.box-content {
+	@include clear;
+	width: 100%;
+	padding: 60px 0;
+
+	&.box-page {
+		min-height: 700px;
+	}
+
+	&.box-segmentos {
+		padding-top: 80px;
+	}
+
+	&.box-slide {
+		padding: 0;
+		position: relative;
+		z-index: 0;
+	}
+
+	&.box-blog {
+		padding: 80px 0;
+	}
+
+	&.seguimentos {
+		padding: 0;
+	}
+
+	&.box-etapas {
+
+	}
+
+	&.cinza {
+		background-color: $cinza;
+	}
+
+	&.azul {
+		background-color: $azul;
+
+		&.box-etapas {
+			.sub-tit, .subtitulo, .content-txt p {
+				color: #ffffff;
+			}
+		}
+	}
+
+	&.border {
+		border: 1px solid $cinza2;
+		border-width: 1px 0;
+	}
+}

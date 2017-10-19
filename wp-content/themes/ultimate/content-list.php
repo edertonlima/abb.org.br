@@ -1,16 +1,18 @@
-<article class="post-list">
-	<?php 
-		$imagem = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), '' ); 
-		if($imagem[0]){ ?>
-			<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="imagem_principal"><img src="<?php echo $imagem[0]; ?>" alt="<?php the_title(); ?>" class="" /></a>
-		<?php }
-	?>
+<?php 
+	$imagem = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'medium' );
+?>
 
-	<div class="box-content sombra no-padding">
-		<div class="container">
-			<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><h5><?php the_title(); ?></h5></a>
-			<span class="date"><?php the_date(); ?></span>
-			<?php the_excerpt(); ?>
+<li class="col-4">
+	<a href="<?php the_permalink(); ?>" style="background-image: url('<?php echo $imagem[0]; ?>');" title="<?php the_title(); ?>">
+		<div class="mask">
+			<i class="fa fa-link" aria-hidden="true"></i>
 		</div>
-	</div>
-</article>
+	</a>
+
+	<h3><?php the_title(); ?></h3>
+	<p><?php the_excerpt(); ?></p>
+	<a href="<?php the_permalink(); ?>" class="leia-mais" title="<?php the_title(); ?>">
+		<i class="fa fa-file-text-o" aria-hidden="true"></i>
+		Leia mais
+	</a>
+</li>

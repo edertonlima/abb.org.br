@@ -252,3 +252,45 @@
 		}
 	}
 }
+
+.home {
+	.nav ul li.menu-home a {
+		color: $vermelho;
+	}
+}
+
+.page-id-126, .page-id-5 {
+	.nav ul li.menu-sobre a {
+		color: $vermelho;
+	}
+}
+
+.post-type-archive-projetos, .single-projetos {
+	.nav ul li.menu-projetos a {
+		color: $vermelho;
+	}
+}
+
+.category, .single-post {
+	.nav ul li.menu-noticias a {
+		color: $vermelho;
+	}
+}
+
+.post-type-archive-eventos, .single-eventos {
+	.nav ul li.menu-eventos a {
+		color: $vermelho;
+	}
+}
+
+.post-type-archive-galerias, .single-galerias {
+	.nav ul li.menu-galerias a {
+		color: $vermelho;
+	}
+}
+
+.page-id-134, .page-id-129 {
+	.nav ul li.menu-servicos a {
+		color: $vermelho;
+	}
+}

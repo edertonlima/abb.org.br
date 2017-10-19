@@ -56,7 +56,14 @@ h4 {
 		margin-bottom: 10px;
 	}
 
-	@media all and (max-width: 750px) {
+	span {
+		font-size: $font-size;
+		line-height: $font-size+.8;
+		font-weight: $regular;
+		display: block;
+	}
+
+	@media all and (max-width: 980px) {
 		width: 95%;
 	}
 }
@@ -71,7 +78,7 @@ h6 {
 
 p {
 	font-size: $font-size;
-	line-height: $font-size+.5;
+	line-height: $font-size+.8;
 	font-weight: $regular;
 	margin-bottom: 15px;
 
@@ -84,6 +91,20 @@ p {
 		line-height: 1.25rem;
 	}
 
+	&.justify {
+		text-align: justify-center;
+	}
+
+	&.center {
+		text-align: center;
+	}
+
+	&.justify.center { 
+		text-align: justify;  
+		-moz-text-align-last: center;
+		text-align-last: center;
+	}
+
 	@media all and (max-width: 770px){
 		font-size: 1.25rem;
 		line-height: (1.25rem)+.5;
@@ -92,6 +113,7 @@ p {
 
 a {
 	&.leia-mais {
+		float: left;
 		color: $vermelho;
 		line-height: 30px;
 		text-decoration: none;
@@ -112,12 +134,6 @@ a {
 			}
 		}
 	}
-}
-
-.justify-center {
-	text-align: justify;  
-	/*-moz-text-align-last: center;
-	text-align-last: center;*/
 }
 
 .center {

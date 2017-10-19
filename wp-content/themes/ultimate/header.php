@@ -44,7 +44,7 @@
 		$descricao = $descricao_princ;
 	}
 
-	$autor = 'Di20 Desenvolvimento';
+	$autor = '';
 ?>
 
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -90,6 +90,7 @@
 
 <!-- CSS -->
 <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/assets/css/style.css" media="screen" />
+<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/owl.carousel.min.css" type="text/css" media="screen" />
 
 <!-- JQUERY -->
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/assets/js/jquery.min.js"></script>
@@ -170,19 +171,24 @@
 
 				<div class="item_bar">
 					<i class="fa fa-phone" aria-hidden="true"></i>
-					(49) 3329-6380
+					<?php the_field('telefone_1','option'); ?>
 				</div>
 
 				<div class="item_bar">
 					<i class="fa fa-envelope-o" aria-hidden="true"></i>
-					abel@abb.org.br
+					<?php the_field('email','option'); ?>
 				</div>
 
-				<div class="redes">
-					<a href="javascript:" title="" class="item_bar"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-					<a href="javascript:" title="" class="item_bar"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-					<a href="javascript:" title="" class="item_bar"><i class="fa fa-youtube" aria-hidden="true"></i></a>
-				</div>
+				<?php if( have_rows('redes_sociais','option') ): ?>
+					<div class="redes">						
+						<?php while ( have_rows('redes_sociais','option') ) : the_row(); ?>
+
+							<a href="<?php the_sub_field('url','option'); ?>" class="item_bar" title="<?php the_sub_field('nome','option'); ?>" target="_blank">
+								<?php the_sub_field('icone','option'); ?>
+							</a>
+						<?php endwhile; ?>						
+					</div>
+				<?php endif; ?>
 			</div>
 		</div>
 
@@ -199,32 +205,32 @@
 
 			<nav class="nav">
 				<ul class="menu-principal">
-					<li class="">
+					<li class="menu-home">
 						<a href="<?php echo get_home_url(); ?>" title="Home">Home</a>
 					</li>
 
-					<li class="">
-						<a href="<?php echo get_permalink(get_page_by_path('sobre')); ?>" title="">Sobre</a>
+					<li class="menu-sobre">
+						<a href="<?php echo get_permalink(get_page_by_path('sobre')); ?>" title="Sobre">Sobre</a>
 					</li>
 
-					<li class="">
-						<a href="javascript:" title="">Projetos</a>
+					<li class="menu-projetos">
+						<a href="<?php echo get_home_url(); ?>/projetos" title="">Projetos</a>
 					</li>
 
-					<li class="">
-						<a href="javascript:" title="">Notícias</a>
+					<li class="menu-noticias">
+						<a href="<?php echo get_home_url(); ?>/noticias" title="">Notícias</a>
 					</li>
 
-					<li class="">
-						<a href="javascript:" title="">Eventos</a>
+					<li class="menu-eventos">
+						<a href="<?php echo get_home_url(); ?>/eventos" title="">Eventos</a>
 					</li>
 
-					<li class="">
-						<a href="javascript:" title="">Galerias</a>
+					<li class="menu-galerias">
+						<a href="<?php echo get_home_url(); ?>/galerias" title="">Galerias</a>
 					</li>
 
-					<li class="">
-						<a href="javascript:" title="">Serviços</a>
+					<li class="menu-servicos">
+						<a href="<?php echo get_permalink(get_page_by_path('servicos')); ?>" title="Serviços">Serviços</a>
 					</li>
 
 					<li class="">
@@ -233,18 +239,4 @@
 				</ul>
 			</nav>
 
-		</div>
-
-		<?php if(!(is_front_page())){ ?>
-			<div class="header-tit">
-				<div class="image-header" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/bg_header.jpg');"></div>
-
-				<h2><?php the_title(); ?></h2>
-
-				<ul class="breadcrumbs">
-					<li><a href="<?php echo get_home_url(); ?>" title="Home">Home</a></li>
-					<li><strong><?php the_title(); ?></strong></li>
-				</ul>
-			</div>
-		<?php } ?>
-	</header>
+		</div>	

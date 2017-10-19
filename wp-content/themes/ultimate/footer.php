@@ -11,15 +11,8 @@
 			<div class="row">
 
 				<div class="col-4">
-					<h1>
-						<a href="<?php echo get_home_url(); ?>" title="<?php the_field('titulo', 'option'); ?>">
-							<?php /*<img src="<?php the_field('logo_header', 'option'); ?>" alt="<?php the_field('titulo', 'option'); ?>">*/?>
-							<img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="<?php the_field('titulo', 'option'); ?>">
-						</a>
-					</h1>
-					<h3>ABB Associação Beneficente Betesda</h3>
-					<p>Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse pellentesque dui.</p>
-					<p>Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor.</p>
+					<h3><?php the_field('titulo_footer','option'); ?></h3>
+					<?php the_field('texto_footer','option'); ?>
 				</div>
 
 				<div class="col-5">
@@ -27,7 +20,7 @@
 						<i class="fa fa-envelope-o" aria-hidden="true"></i>
 						<span>
 							Quer falar conosco?
-							<strong>abel@abb.org.br</strong>
+							<strong><?php the_field('email','option'); ?></strong>
 						</span>
 					</div>
 
@@ -35,57 +28,45 @@
 						<i class="fa fa-comment-o" aria-hidden="true"></i>
 						<span>
 							Ligue para nós
-							<strong>(49) 3329-6380</strong>
+							<strong><?php the_field('telefone_1','option'); ?></strong>
 						</span>
 					</div>
 
 					<div class="item endereco">
-						<p>Rua Guaporé, 738 D CEP 89.801-101 <br> Bairro Presidente Medici | Chapecó - SC</p>
+						<p><?php the_field('endereco','option'); ?></p>
 					</div>
 				</div>
 
 				<div class="col-3">
-					<div class="fb-page" 
-					data-href="https://www.facebook.com/facebook"
-					data-width="380" 
-					data-hide-cover="false"
-					data-show-facepile="false"></div>
+					<?php if( get_field('facebook_rodape','option') ): ?>
+						<div class="fb-page" 
+						data-href="<?php the_field('facebook_rodape','option'); ?>"
+						data-width="380" 
+						data-hide-cover="false"
+						data-show-facepile="false"></div>
+					<?php endif; ?>
 				</div>
-
-				<?php /*<div class="tel_footer">
-					<span><?php the_field('telefone_1', 'option'); ?></span>
-					<?php
-						if(get_field('telefone_2', 'option')){ ?>
-							<span><?php the_field('telefone_2', 'option'); ?></span>
-						<?php }
-					 ?>
-				</div>
-				<img src="<?php the_field('logo_header', 'option'); ?>" alt="<?php the_field('titulo', 'option'); ?>" class="logo_footer"> */?>
 				
 			</div>
 		</div>
 
 		<div class="copy">
-			
-			<div class="redes">
-				<a href="javascript:" title="" class="item_bar"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-				<a href="javascript:" title="" class="item_bar"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-				<a href="javascript:" title="" class="item_bar"><i class="fa fa-youtube" aria-hidden="true"></i></a>
-				<a href="javascript:" class="item_bar" id="gotop"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
-			</div>
 
 			<?php if( have_rows('redes_sociais','option') ): ?>
 				<div class="redes">						
 					<?php while ( have_rows('redes_sociais','option') ) : the_row(); ?>
 
 						<a href="<?php the_sub_field('url','option'); ?>" title="<?php the_sub_field('nome','option'); ?>" target="_blank">
-							<img src="<?php the_sub_field('icone','option'); ?>" alt="<?php the_field('nome', 'option'); ?>">
+							<?php the_sub_field('icone','option'); ?>
 						</a>
 					<?php endwhile; ?>
+
+					<a href="javascript:" class="item_bar" id="gotop"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+					
 				</div>
 			<?php endif; ?>
 
-			<p><i class="fa fa-copyright" aria-hidden="true"></i> <?php echo date('Y') ?> ABB Associação Beneficente Betesda.</p>
+			<p><i class="fa fa-copyright" aria-hidden="true"></i> <?php echo date('Y') ?> <?php the_field('titulo','option'); ?></p>
 		</div>
 		
 	</footer>

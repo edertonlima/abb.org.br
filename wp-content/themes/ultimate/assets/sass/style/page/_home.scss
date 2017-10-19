@@ -13,6 +13,17 @@
 		text-align: center;
 	}
 
+	.row {
+		text-align: center;
+
+		.col-4 {
+			width: 33%;
+			float: none;
+			display: inline-block;
+			margin-bottom: 70px;
+		}
+	}
+
 	.item-areaatuacao {
 		.icon-content {
 			display: block;
@@ -51,6 +62,30 @@
 				i {
 					color: #ffffff;
 				}
+			}
+		}
+
+		@media all and (max-width: 980px) {
+			.icon-content {
+				width: 100px;
+				height: 100px;
+				border-width: 5px;
+
+				.icon {
+					i {
+						font-size: 2.5rem;
+					}
+				}
+			}
+
+			h3 {
+				font-size: 1.5rem;
+				line-height: 1.5rem;
+			}
+
+			p {
+				font-size: .875rem;
+				line-height: 1rem;
 			}
 		}
 

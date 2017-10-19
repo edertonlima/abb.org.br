@@ -1,113 +1,163 @@
 
-<section class="box-content box-page">
-
-</section>
-
-
-<?php /*
-<section class="box-content no-padding">
-	<span id="nos" class="link_page_ancora"></span>
-
-	<h3 class="sub-tituto-page">
-		<div class="container"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico_page_nos.png" class="" alt="Nós" /><span>Nós</span></div>
-	</h3>
-
-	<?php if(get_field('imagem_destaque_nos')){ ?>
-		<img src="<?php the_field('imagem_destaque_nos'); ?>" class="img-nos" />
-	<?php } ?>
-</section>
-
-<section class="box-content box-page-sobre sombra">
+<section class="box-content box-page box-page-sobre">
 	<div class="container">
-
-		<p class="sub-tituto text-content borda-efeito">
-			<?php the_field('texto_longo'); ?>
-		</p>
-
-		<?php if( have_rows('equipe') ):
-			while ( have_rows('equipe') ) : the_row(); ?>
-
-				<div class="equipe">
-					<?php if(get_sub_field('imagem')){ ?>
-						<img src="<?php the_sub_field('imagem'); ?>" class="" alt="<?php the_sub_field('titulo'); ?>"/>
-					<?php } ?>					
-
-					<?php if(get_sub_field('titulo')){ ?>
-						<h5><?php the_sub_field('titulo'); ?></h5>
-					<?php } ?>
-
-					<?php if(get_sub_field('funcao')){ ?>
-						<span><?php the_sub_field('funcao'); ?></span>
-					<?php } ?>
-
-					<?php if(get_sub_field('texto')){ ?>
-						<p><?php the_sub_field('texto'); ?></p>
-					<?php } ?>
-					
-				</div>
-
-			<?php endwhile;
-		endif; ?>	
-
-	</div>
-</section>
-
-<section class="box-content no-padding">
-	<span id="realizamos" class="link_page_ancora"></span>
-
-	<h3 class="sub-tituto-page margem">
-		<div class="container"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico_page_realizamos.png" class="" alt="Realizamos" /><span>Realizamos</span></div>
-	</h3>
-
-	<div class="container">
-		<p class="sub-tituto text-content-medium borda-efeito">
-			<?php the_field('texto_realizamos'); ?>
-		</p>
-	</div>
-
-	<?php if( have_rows('ico_page_inferior') ): ?>
-		<ul class="ico-page ico-page-inferior">
-			<?php while ( have_rows('ico_page_inferior') ) : the_row(); ?>
-
-				<li>
-					<img src="<?php the_sub_field('icone'); ?>" class="" alt="<?php the_sub_field('titulo'); ?>"/>
-					<span><?php the_sub_field('titulo'); ?></span>
-				</li>
-
-			<?php endwhile; ?>
-		</ul>
-	<?php endif; ?>	
-</section>
-
-<section class="box-content box-sonhos no-padding">
-	<span id="sonhos" class="link_page_ancora"></span>
-
-	<h3 class="sub-tituto-page margem">
-		<div class="container"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/ico_page_sonhos.png" class="" alt="Sonhos" /><span>Sonhos</span></div>
-	</h3>
-
-	<div class="container">
+		
 		<div class="row">
-			
-			<div class="col-6">
-				<img src="<?php the_field('imagem-sonhos'); ?>" class="imagem-sonhos" alt="<?php the_field('titulo-sonhos'); ?>"/>
+			<div class="col-text-sobre">
+				<div class="col-12">
+
+					<div class="text-detalhe">
+						<?php the_content(); ?>
+					</div>
+
+				</div>
 			</div>
-			<div class="col-6">
-				<h5><?php the_field('titulo-sonhos'); ?></h5>
-				<p><?php the_field('texto-sonhos'); ?></p>
+
+			<div class="col-text-sobre">
+				<?php $imagem = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), '' ); ?>
+				<img src="<?php echo $imagem[0]; ?>" alt="Conheça um pouco sobre nós" class="img-sobre">
 			</div>
+
+			<div class="col-text-sobre">
+				<div class="col-4">
+					<h4>Missão</h4>
+					<?php the_field('missao'); ?>
+				</div>
+				<div class="col-4">
+					<h4>Visão</h4>
+					<?php the_field('visao'); ?>
+				</div>
+				<div class="col-4">
+					<h4>Valores</h4>
+					<?php the_field('valores'); ?>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+	<div class="text-box-resp">
+		<div class="row">
+		
+			<div class="col-6 resp-social">
+				<h4>Responsabilidade Social</h4>
+				<p><?php the_field('responsabilidade_social'); ?></p>
+			</div>
+
+			<div class="col-6 resp-ambiental">
+				<h4>Responsabilidade Ambiental</h4>
+				<p><?php the_field('responsabilidade_ambiental'); ?></p>
+			</div>
+
 		</div>
 	</div>
 </section>
 
-*/ ?>
+<?php if( have_rows('areas_de_atuacao') ): ?>
+	<section class="box-content box-post box-areaatuacao">
+		<div class="container">
+			<div class="row">
+
+					
+				<?php while ( have_rows('areas_de_atuacao') ) : the_row(); ?>
+
+					<div class="col-4">				
+						<div class="item-areaatuacao">
+							<div class="icon-content">
+								<div class="icon">
+									<i class="fa fa-star-o" aria-hidden="true"></i>
+								</div>
+							</div>
+							<div class="desc_wrapper">
+								<h3><?php the_sub_field('titulo'); ?></h3>
+								<p><?php the_sub_field('texto'); ?></p>
+							</div>
+						</div>
+					</div>
+
+				<?php endwhile; ?>
+
+			</div>
+		</div>
+	</section>
+<?php endif; ?>
+
+<?php if( have_rows('equipe') ): ?>
+	<section class="box-content box-post box-post-sobre">
+		<div class="container">
+
+			<div class="list-post-home">
+				<h4>
+					<?php the_field('titulo_equipe'); ?>
+					<span><?php the_field('sub_titulo_equipe'); ?></span>
+				</h4>
+			</div>
+
+			<ul class="row list-post">
+				<?php while ( have_rows('equipe') ) : the_row(); ?>
+
+					<li class="col-4">
+						<a href="javascript:" style="background-image: url('<?php the_sub_field('imagem'); ?>');">
+							<div class="mask">
+								<i class="fa fa-link" aria-hidden="true"></i>
+							</div>
+						</a>
+
+						<h3><?php the_sub_field('titulo'); ?></h3>
+						<p><?php the_sub_field('texto'); ?></p>
+					</li>
+
+				<?php endwhile; ?>
+			</ul>
+
+		</div>
+	</section>
+<?php endif; ?>
+
+<?php if( have_rows('parceiros') ): ?>
+	<section class="box-content box-post parceiros">
+		<div class="container">
+
+			<div class="list-post-home">
+				<h4>
+					<?php the_field('titulo_parceiros'); ?>
+					<span><?php the_field('sub_titulo_parceiros'); ?></span>
+				</h4>
+			</div>
+			
+			<div class="owl-carousel owl-theme parceiros">
+				<?php while ( have_rows('parceiros') ) : the_row(); ?>
+					<a href="<?php the_sub_field('link'); ?>" target="_blank" title="<?php the_sub_field('titulo'); ?>" class="item">
+						<i class="fa fa-link" aria-hidden="true"></i>
+						<img src="<?php the_sub_field('imagem'); ?>" alt="<?php the_sub_field('titulo'); ?>">
+					</a>
+				<?php endwhile; ?>
+			</div>		
+
+		</div>
+	</section>	
+<?php endif; ?>
 
 <script type="text/javascript">
-	jQuery(document).ready(function(){	    
 
-	});
+</script>
 
-	jQuery(window).resize(function(){
-
-	});
+<script src="<?php echo get_template_directory_uri(); ?>/assets/js/owl.carousel.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+	jQuery('.owl-carousel.parceiros').owlCarousel({
+		loop: false,
+		center: false,
+		nav: true,
+		margin: 20,
+		navText : ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
+		responsive: {
+			0: {
+				items: 1
+			},
+			768: {
+				items: 6
+			}
+		}
+	}) 
 </script>
